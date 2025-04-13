@@ -37,9 +37,9 @@ namespace spase_war
         int bulletspeed = 50;
         bool ghalbo = false;
         bool dotir = false;
-        bool dotirPowerActive = false;
-        bool doubleShotPowerDisplayed = false;
-        bool doubleShotPowerActive = false;
+        bool dotirpoweractive = false;
+        bool doubleshotpowerdisplayed = false;
+        bool doubleshotpoweractive = false;
         bool bullet2Fire = false;
         bool ishit1 = false;
         bool ishit5 = false;
@@ -229,7 +229,7 @@ namespace spase_war
                 bullet.Location = new Point(player.Left + player.Width / 2 - bullet.Width / 2, player.Top - bullet.Height);
                 bullet.Visible = true;
 
-                if (doubleShotPowerActive)
+                if (doubleshotpoweractive)
                 {
                     bullet2Fire = true;
                     bullet2.Location = new Point(player.Right - 20, player.Top - bullet2.Height);
@@ -310,15 +310,12 @@ namespace spase_war
                     bullet2.Visible = false;
                     bullet2.Location = new Point(479, 389);
                     dotir = false;
-                    doubleShotPowerDisplayed = false;
-                    doubleShotPowerActive = false;
+                    doubleshotpowerdisplayed = false;
+                    doubleshotpoweractive = false;
                     bullet2Fire = false;
                     dotirpow.Visible = false;
                     backgroundPlayer.Play();
                     game_overPlayer.Pause();
-
-
-
                 }
             }
         }
@@ -584,7 +581,7 @@ namespace spase_war
         {
             bulletfire = false;
             bullet.Visible = false;
-            if (doubleShotPowerActive)
+            if (doubleshotpoweractive)
             {
                 bullet2Fire = false;
                 bullet2.Visible = false;
@@ -676,12 +673,12 @@ namespace spase_war
             int t = Convert.ToInt32(label1.Text);
             int e = Convert.ToInt32(label2.Text);
 
-            if (e == 1 && t == 20 && !doubleShotPowerDisplayed)
+            if (e == 1 && t == 20 && !doubleshotpowerdisplayed)
             {
                 dotirpow.Visible = true;
                 dotirpow.Top = 0;
                 dotirpow.Left = rand.Next(20, this.ClientSize.Width - dotirpow.Width);
-                doubleShotPowerDisplayed = true;
+                doubleshotpowerdisplayed = true;
             }
 
             if (dotirpow.Visible)
@@ -690,7 +687,7 @@ namespace spase_war
 
                 if (dotirpow.Bounds.IntersectsWith(player.Bounds))
                 {
-                    doubleShotPowerActive = true;
+                    doubleshotpoweractive = true;
                     dotirpow.Visible = false;
                 }
 
